@@ -1,0 +1,6 @@
+framework module Pods_PrimeCupTests {
+  umbrella header "Pods-PrimeCupTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

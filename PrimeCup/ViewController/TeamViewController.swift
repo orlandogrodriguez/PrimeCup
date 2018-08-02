@@ -14,6 +14,9 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var oTeamLogoImageView: UIImageView!
     @IBOutlet weak var oTeamNameLabel: UILabel!
     @IBOutlet weak var oPlayersTableView: UITableView!
+    @IBOutlet weak var oStarsView: UIView!
+    @IBOutlet weak var oStarsConstraint: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,20 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let team = team {
             oTeamLogoImageView.image = team.teamLogo
             oTeamNameLabel.text = team.teamName
+            oStarsConstraint.constant = 240
+            var averageTeamScore: Double = 0
+            for player in team.teamMembers {
+                averageTeamScore += Double(player.averageStats)
+            }
+            averageTeamScore /= Double(team.teamMembers.count)
+            
+            UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
+                self.oStarsConstraint.constant = 240.0 - CGFloat(240.0 * (averageTeamScore / 100.0))
+                self.view.layoutIfNeeded()
+            }) { (finished) in
+                print("Finished animation.")
+            }
+            
         } else {
             oTeamLogoImageView.image = UIImage()
             oTeamNameLabel.text = "--"

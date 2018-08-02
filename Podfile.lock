@@ -1,0 +1,16 @@
+PODS:
+  - TKRadarChart (1.4.2)
+
+DEPENDENCIES:
+  - TKRadarChart
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - TKRadarChart
+
+SPEC CHECKSUMS:
+  TKRadarChart: a9242cd993ed1a0a42b6e470805619f897f41c3c
+
+PODFILE CHECKSUM: 0f6059c7a17de67a811f6df588f21c54b4b9ba54
+
+COCOAPODS: 1.5.3
