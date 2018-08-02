@@ -23,6 +23,7 @@
 		0C477B2C211016700062C44A /* MatchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C477B2A211016700062C44A /* MatchHistoryViewController.swift */; };
 		0C516897211104B9009FAE9D /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C516896211104B9009FAE9D /* PlayerCell.swift */; };
 		0C516899211106DC009FAE9D /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C516898211106DC009FAE9D /* TeamViewController.swift */; };
+		0C51689B211274B0009FAE9D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C51689A211274B0009FAE9D /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		0C477B2A211016700062C44A /* MatchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryViewController.swift; sourceTree = "<group>"; };
 		0C516896211104B9009FAE9D /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		0C516898211106DC009FAE9D /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		0C51689A211274B0009FAE9D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				0C477AF1210F99E80062C44A /* StandingsViewController.swift */,
 				0C477B2A211016700062C44A /* MatchHistoryViewController.swift */,
 				0C516898211106DC009FAE9D /* TeamViewController.swift */,
+				0C51689A211274B0009FAE9D /* PlayerViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				0C477AF0210F99E80062C44A /* AppDelegate.swift in Sources */,
 				0C477B20210F9A3D0062C44A /* Player.swift in Sources */,
 				0C516897211104B9009FAE9D /* PlayerCell.swift in Sources */,
+				0C51689B211274B0009FAE9D /* PlayerViewController.swift in Sources */,
 				0C477B2C211016700062C44A /* MatchHistoryViewController.swift in Sources */,
 				0C477B25210F9F3D0062C44A /* TeamPlayerDatabase.swift in Sources */,
 				0C477B22210F9BA90062C44A /* Match.swift in Sources */,

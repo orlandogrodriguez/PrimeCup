@@ -28,6 +28,8 @@ class Match: NSObject {
     init(teams: (Team, Team), score: (Int, Int)) {
         self.teams = teams
         self.score = score
+        teams.0.gamesPlayed += 1
+        teams.1.gamesPlayed += 1
         if score.0 > score.1 {
             winner = teams.0
             loser = teams.1
@@ -45,10 +47,8 @@ class Match: NSObject {
         winner.points += 3
         winner.gamesWon += 1
         winner.goalDifference += abs(score.0 - score.1)
-        winner.gamesPlayed += 1
         loser.gamesLost += 1
         loser.goalDifference -= abs(score.0 - score.1)
-        loser.gamesPlayed += 1
     }
 
 }

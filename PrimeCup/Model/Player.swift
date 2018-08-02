@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Player: NSObject {
     
@@ -17,6 +18,7 @@ class Player: NSObject {
     let country: String
     var team: String
     let position: String
+    var playerImage: UIImage?
     
     // Player Stats
     private(set) var pace: Int = 0
@@ -24,7 +26,8 @@ class Player: NSObject {
     private(set) var def: Int = 0
     private(set) var str: Int = 0
     private(set) var sho: Int = 0
-    private(set) var pas: Int = 0
+    var pas: Int = 0
+    var averageStats: Int = 0
     
     init(name: String, dateOfBirth: String, age: Int, country: String, team: String, position: String) {
         self.name = name
@@ -33,6 +36,7 @@ class Player: NSObject {
         self.country = country
         self.team = team
         self.position = position
+        self.playerImage = #imageLiteral(resourceName: "Default Player Image")
     }
     
     func updatePlayerStats(pace: Int, drib: Int, def: Int, str: Int, sho: Int, pas: Int) {
@@ -42,6 +46,11 @@ class Player: NSObject {
         self.str = str
         self.sho = sho
         self.pas = pas
+        self.averageStats = (pace + drib + def + str + sho + pas) / 6
+    }
+    
+    func setPlayerImage(image: UIImage) {
+        self.playerImage = image
     }
     
 }

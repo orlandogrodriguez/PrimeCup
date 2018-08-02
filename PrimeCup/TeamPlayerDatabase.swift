@@ -65,8 +65,8 @@ class TeamPlayerDatabase: NSObject {
         // 1:   Croquetas Utd.
         // 2:   Stick FC
         // 3:   PPS
-        matches.append(Match(teams: (teams[0], teams[1]), score: (3, 2)))
-        matches.append(Match(teams: (teams[1], teams[2]), score: (0, 2)))
+        matches.append(Match(teams: (teams[0], teams[1]), score: (3, 3)))
+        matches.append(Match(teams: (teams[1], teams[2]), score: (1, 0)))
         matches.append(Match(teams: (teams[3], teams[2]), score: (1, 1)))
         matches.append(Match(teams: (teams[0], teams[3]), score: (5, 1)))
     }

@@ -11,11 +11,17 @@ import UIKit
 class StandingsViewController: UITableViewController {
     
     var database = TeamPlayerDatabase()
+    var teams: [Team] = []
     
     @IBOutlet var oStandingsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        teams = database.teams.sorted { (team1: Team, team2: Team) -> Bool in
+            let team1Points = team1.points + team1.goalDifference
+            let team2Points = team2.points + team2.goalDifference
+            return team1Points > team2Points
+        }
         updateViewFromModel()
     }
     
@@ -34,20 +40,19 @@ extension StandingsViewController: UINavigationControllerDelegate, UITabBarDeleg
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StandingsCell") as! StandingsCell
-        let sortedTeams = database.teams.sorted { (team1: Team, team2: Team) -> Bool in
-            let team1Points = team1.points + team1.goalDifference
-            let team2Points = team2.points + team2.goalDifference
-            return team1Points > team2Points
-        }
-        cell.setDataForTeam(team: sortedTeams[indexPath.row])
+        cell.setDataForTeam(team: teams[indexPath.row])
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: - Go to team page
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "teamVC") as! TeamViewController
+        nextVC.team = teams[indexPath.row]
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 114
     }
+    
+
 }
