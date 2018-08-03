@@ -166,10 +166,12 @@
                             <outlet property="delegate" destination="EtH-ia-3Yj" id="BhP-K4-sTs"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Standings" id="XaH-BT-rS9">
-                        <color key="badgeColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <tabBarItem key="tabBarItem" title="STANDINGS" image="standings" selectedImage="standings" id="XaH-BT-rS9">
+                        <color key="badgeColor" red="0.30588235289999999" green="0.57254901960000004" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="Standings" id="bUL-on-rcY"/>
+                    <navigationItem key="navigationItem" title="Standings" id="bUL-on-rcY">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="FaQ-zY-kfi"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="oStandingsTableView" destination="LE9-nO-buE" id="w2e-P3-OKw"/>
                         <segue destination="EJf-dC-Y2c" kind="show" id="gPA-xX-gjn"/>
@@ -522,7 +524,9 @@
                             <outlet property="delegate" destination="vqk-71-YxH" id="x3P-WT-JMy"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Match History" id="taV-ns-A87"/>
+                    <tabBarItem key="tabBarItem" title="MATCH HISTORY" image="history" selectedImage="history" id="taV-ns-A87">
+                        <color key="badgeColor" red="0.30588235289999999" green="0.57254901960000004" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="oMatchHistoryTableView" destination="O5a-yb-nt0" id="nu9-Fe-HHT"/>
                     </connections>
@@ -582,5 +586,7 @@
     </scenes>
     <resources>
         <image name="Stars Frame" width="240" height="48"/>
+        <image name="history" width="44" height="44"/>
+        <image name="standings" width="44" height="44"/>
     </resources>
 </document>

@@ -147,7 +147,7 @@ class TeamPlayerDatabase: NSObject {
         
         // Zurdo
         player = Player(name: "Zurdo", dateOfBirth: "08-02-1995", age: 23, country: "Puerto Rico", team: "PPS", position: "LB")
-        player.updatePlayerStats(pace: 73, drib: 72, def: 82, str: 75, sho: 75, pas: 77)
+        player.updatePlayerStats(pace: 90, drib: 79, def: 85, str: 40, sho: 60, pas: 81)
         players.append(player)
         addToTeam(player: player)
         
@@ -157,11 +157,6 @@ class TeamPlayerDatabase: NSObject {
         players.append(player)
         addToTeam(player: player)
         
-        // Patricia
-        player = Player(name: "Manolas", dateOfBirth: "08-02-1995", age: 23, country: "Puerto Rico", team: "PPS", position: "LB")
-        player.updatePlayerStats(pace: 80, drib: 61, def: 86, str: 83, sho: 19, pas: 42)
-        players.append(player)
-        addToTeam(player: player)
     }
     
     func generateMatches() {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C3B66502114EE1100E047FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C3B664F2114EE1100E047FB /* GoogleService-Info.plist */; };
 		0C477AF0210F99E80062C44A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C477AEF210F99E80062C44A /* AppDelegate.swift */; };
 		0C477AF2210F99E80062C44A /* StandingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C477AF1210F99E80062C44A /* StandingsViewController.swift */; };
 		0C477AF5210F99E80062C44A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C477AF3210F99E80062C44A /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		0A519223E298D507260D6BA3 /* Pods-PrimeCupUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrimeCupUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrimeCupUITests/Pods-PrimeCupUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0C3B664F2114EE1100E047FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0C477AEC210F99E80062C44A /* PrimeCup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrimeCup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C477AEF210F99E80062C44A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C477AF1210F99E80062C44A /* StandingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				0C477AF6210F99EA0062C44A /* Assets.xcassets */,
 				0C477AF8210F99EA0062C44A /* LaunchScreen.storyboard */,
 				0C477AFB210F99EA0062C44A /* Info.plist */,
+				0C3B664F2114EE1100E047FB /* GoogleService-Info.plist */,
 				0C477B24210F9F3D0062C44A /* TeamPlayerDatabase.swift */,
 			);
 			path = PrimeCup;
@@ -328,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C477AFA210F99EA0062C44A /* LaunchScreen.storyboard in Resources */,
+				0C3B66502114EE1100E047FB /* GoogleService-Info.plist in Resources */,
 				0C477AF7210F99EA0062C44A /* Assets.xcassets in Resources */,
 				0C477AF5210F99E80062C44A /* Main.storyboard in Resources */,
 			);
@@ -357,11 +361,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PrimeCup/Pods-PrimeCup-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/TKRadarChart/TKRadarChart.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TKRadarChart.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
