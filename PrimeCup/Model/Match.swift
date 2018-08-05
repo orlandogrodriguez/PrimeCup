@@ -24,6 +24,18 @@ class Match: NSObject {
         }
     }
     var score: (Int, Int)
+    var goals: [Goal] = [] {
+        didSet {
+            print("Added goal")
+            if goals.last?.scorer.team == self.teams.0.teamName {
+                score.0 += 1
+            } else if goals.last?.scorer.team == self.teams.1.teamName {
+                score.1 += 1
+            }
+            goals.last?.scorer.goals += 1
+            goals.last?.assist.assists += 1
+        }
+    }
     
     init(teams: (Team, Team), score: (Int, Int)) {
         self.teams = teams
@@ -49,6 +61,11 @@ class Match: NSObject {
         winner.goalDifference += abs(score.0 - score.1)
         loser.gamesLost += 1
         loser.goalDifference -= abs(score.0 - score.1)
+    }
+    
+    convenience init(teams: (Team, Team), score: (Int, Int), goals: [Goal]) {
+        self.init(teams: teams, score: score)
+        self.goals = goals
     }
 
 }

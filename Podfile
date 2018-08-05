@@ -7,6 +7,7 @@ target 'PrimeCup' do
   pod 'TKRadarChart'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   # Pods for PrimeCup
   target 'PrimeCupTests' do

@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0C3B66502114EE1100E047FB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C3B664F2114EE1100E047FB /* GoogleService-Info.plist */; };
+		0C3B665221151ADD00E047FB /* AdminLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3B665121151ADD00E047FB /* AdminLoginViewController.swift */; };
+		0C3B665621152B2000E047FB /* AdminHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3B665521152B2000E047FB /* AdminHomeViewController.swift */; };
+		0C3B6658211568E800E047FB /* SelectHomeTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3B6657211568E800E047FB /* SelectHomeTeamViewController.swift */; };
+		0C3B665A2115698200E047FB /* SelectAwayTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3B66592115698200E047FB /* SelectAwayTeamViewController.swift */; };
+		0C3B665C211569AD00E047FB /* SetScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3B665B211569AD00E047FB /* SetScoreViewController.swift */; };
+		0C3B665E21156A1A00E047FB /* AddGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3B665D21156A1A00E047FB /* AddGoalViewController.swift */; };
+		0C3B66602115788600E047FB /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3B665F2115788600E047FB /* Goal.swift */; };
 		0C477AF0210F99E80062C44A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C477AEF210F99E80062C44A /* AppDelegate.swift */; };
 		0C477AF2210F99E80062C44A /* StandingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C477AF1210F99E80062C44A /* StandingsViewController.swift */; };
 		0C477AF5210F99E80062C44A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C477AF3210F99E80062C44A /* Main.storyboard */; };
@@ -50,6 +57,13 @@
 /* Begin PBXFileReference section */
 		0A519223E298D507260D6BA3 /* Pods-PrimeCupUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrimeCupUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrimeCupUITests/Pods-PrimeCupUITests.release.xcconfig"; sourceTree = "<group>"; };
 		0C3B664F2114EE1100E047FB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C3B665121151ADD00E047FB /* AdminLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminLoginViewController.swift; sourceTree = "<group>"; };
+		0C3B665521152B2000E047FB /* AdminHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomeViewController.swift; sourceTree = "<group>"; };
+		0C3B6657211568E800E047FB /* SelectHomeTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHomeTeamViewController.swift; sourceTree = "<group>"; };
+		0C3B66592115698200E047FB /* SelectAwayTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAwayTeamViewController.swift; sourceTree = "<group>"; };
+		0C3B665B211569AD00E047FB /* SetScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetScoreViewController.swift; sourceTree = "<group>"; };
+		0C3B665D21156A1A00E047FB /* AddGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGoalViewController.swift; sourceTree = "<group>"; };
+		0C3B665F2115788600E047FB /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		0C477AEC210F99E80062C44A /* PrimeCup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrimeCup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C477AEF210F99E80062C44A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C477AF1210F99E80062C44A /* StandingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +199,12 @@
 				0C477B2A211016700062C44A /* MatchHistoryViewController.swift */,
 				0C516898211106DC009FAE9D /* TeamViewController.swift */,
 				0C51689A211274B0009FAE9D /* PlayerViewController.swift */,
+				0C3B665121151ADD00E047FB /* AdminLoginViewController.swift */,
+				0C3B665521152B2000E047FB /* AdminHomeViewController.swift */,
+				0C3B6657211568E800E047FB /* SelectHomeTeamViewController.swift */,
+				0C3B66592115698200E047FB /* SelectAwayTeamViewController.swift */,
+				0C3B665B211569AD00E047FB /* SetScoreViewController.swift */,
+				0C3B665D21156A1A00E047FB /* AddGoalViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -195,6 +215,7 @@
 				0C477B1D210F99FB0062C44A /* Team.swift */,
 				0C477B1F210F9A3D0062C44A /* Player.swift */,
 				0C477B21210F9BA90062C44A /* Match.swift */,
+				0C3B665F2115788600E047FB /* Goal.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -364,6 +385,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/TKRadarChart/TKRadarChart.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -371,6 +393,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TKRadarChart.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,14 +464,21 @@
 			files = (
 				0C477B27210FAC7E0062C44A /* StandingsCell.swift in Sources */,
 				0C477AF2210F99E80062C44A /* StandingsViewController.swift in Sources */,
+				0C3B6658211568E800E047FB /* SelectHomeTeamViewController.swift in Sources */,
 				0C477AF0210F99E80062C44A /* AppDelegate.swift in Sources */,
 				0C477B20210F9A3D0062C44A /* Player.swift in Sources */,
 				0C516897211104B9009FAE9D /* PlayerCell.swift in Sources */,
 				0C51689B211274B0009FAE9D /* PlayerViewController.swift in Sources */,
 				0C477B2C211016700062C44A /* MatchHistoryViewController.swift in Sources */,
 				0C477B25210F9F3D0062C44A /* TeamPlayerDatabase.swift in Sources */,
+				0C3B665E21156A1A00E047FB /* AddGoalViewController.swift in Sources */,
+				0C3B665A2115698200E047FB /* SelectAwayTeamViewController.swift in Sources */,
+				0C3B665221151ADD00E047FB /* AdminLoginViewController.swift in Sources */,
+				0C3B665C211569AD00E047FB /* SetScoreViewController.swift in Sources */,
 				0C477B22210F9BA90062C44A /* Match.swift in Sources */,
+				0C3B66602115788600E047FB /* Goal.swift in Sources */,
 				0C477B292110149D0062C44A /* HistoryCell.swift in Sources */,
+				0C3B665621152B2000E047FB /* AdminHomeViewController.swift in Sources */,
 				0C516899211106DC009FAE9D /* TeamViewController.swift in Sources */,
 				0C477B1E210F99FB0062C44A /* Team.swift in Sources */,
 			);

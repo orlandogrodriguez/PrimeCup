@@ -19,6 +19,8 @@ class Player: NSObject {
     var team: String
     let position: String
     var playerImage: UIImage?
+    var goals: Int = 0
+    var assists: Int = 0
     
     // Player Stats
     private(set) var pace: Int = 0

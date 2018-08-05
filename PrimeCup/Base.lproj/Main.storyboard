@@ -13,7 +13,7 @@
         <!--Admin Login-->
         <scene sceneID="jOx-t5-oTq">
             <objects>
-                <viewController title="Admin Login" id="RhF-g9-FRd" sceneMemberID="viewController">
+                <viewController restorationIdentifier="adminLoginVC" storyboardIdentifier="adminLoginVC" title="Admin Login" id="RhF-g9-FRd" customClass="AdminLoginViewController" customModule="PrimeCup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wY0-nm-pbx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,6 +66,9 @@
                                             <constraint firstAttribute="height" constant="44" id="EMY-DX-qeD"/>
                                         </constraints>
                                         <state key="normal" title="LOGIN"/>
+                                        <connections>
+                                            <action selector="handleLogin:" destination="RhF-g9-FRd" eventType="touchUpInside" id="oCR-8M-I9Z"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -80,6 +83,8 @@
                         <viewLayoutGuide key="safeArea" id="0Vv-An-uGd"/>
                     </view>
                     <connections>
+                        <outlet property="oPasswordTextField" destination="dOa-o8-mc7" id="sOl-kH-0sW"/>
+                        <outlet property="oUsernameTextField" destination="KAh-1R-Rhx" id="KHv-S0-38M"/>
                         <segue destination="aPW-Ng-98j" kind="show" id="YSy-4b-dqr"/>
                     </connections>
                 </viewController>
@@ -90,7 +95,7 @@
         <!--Admin Home-->
         <scene sceneID="CkQ-nz-ZDc">
             <objects>
-                <viewController title="Admin Home" id="aPW-Ng-98j" sceneMemberID="viewController">
+                <viewController restorationIdentifier="adminHomeVC" storyboardIdentifier="adminHomeVC" title="Admin Home" id="aPW-Ng-98j" customClass="AdminHomeViewController" customModule="PrimeCup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EQm-ar-IuW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,7 +108,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                         <state key="normal" title="Add Match"/>
                                         <connections>
-                                            <segue destination="MbE-vb-HZQ" kind="show" id="oui-1b-Qc4"/>
+                                            <action selector="handleAddMatch:" destination="aPW-Ng-98j" eventType="touchUpInside" id="ai6-6O-dlD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFx-Wy-ddA">
@@ -118,9 +123,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6a-GE-cHo">
                                 <rect key="frame" x="16" y="557" width="343" height="30"/>
                                 <state key="normal" title="Return To Home"/>
+                                <connections>
+                                    <action selector="handleReturnToHome:" destination="aPW-Ng-98j" eventType="touchUpInside" id="E2f-u4-Q72"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Administrator Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIJ-w0-33l">
-                                <rect key="frame" x="16" y="16" width="343" height="38.5"/>
+                                <rect key="frame" x="16" y="32" width="343" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -129,7 +137,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7GZ-Rg-vRo" firstAttribute="bottom" secondItem="l6a-GE-cHo" secondAttribute="bottom" constant="16" id="AxD-Pv-YZD"/>
-                            <constraint firstItem="ZIJ-w0-33l" firstAttribute="top" secondItem="7GZ-Rg-vRo" secondAttribute="top" constant="16" id="NX4-gK-eQg"/>
+                            <constraint firstItem="ZIJ-w0-33l" firstAttribute="top" secondItem="7GZ-Rg-vRo" secondAttribute="top" constant="32" id="NX4-gK-eQg"/>
                             <constraint firstItem="7GZ-Rg-vRo" firstAttribute="trailing" secondItem="ZIJ-w0-33l" secondAttribute="trailing" constant="16" id="RE8-4N-P6e"/>
                             <constraint firstItem="thD-22-bnF" firstAttribute="leading" secondItem="7GZ-Rg-vRo" secondAttribute="leading" constant="16" id="WDf-wl-wxd"/>
                             <constraint firstItem="ZIJ-w0-33l" firstAttribute="leading" secondItem="7GZ-Rg-vRo" secondAttribute="leading" constant="16" id="XOK-aK-xBU"/>
@@ -141,21 +149,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7GZ-Rg-vRo"/>
                     </view>
+                    <connections>
+                        <segue destination="MbE-vb-HZQ" kind="show" id="Cvn-tR-5Gh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1D-aJ-Ze6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3669.5999999999999" y="-1325.4872563718143"/>
         </scene>
-        <!--View Controller-->
+        <!--Select Home Team View Controller-->
         <scene sceneID="z5Z-wO-cJw">
             <objects>
-                <viewController id="MbE-vb-HZQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectHomeTeamVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MbE-vb-HZQ" customClass="SelectHomeTeamViewController" customModule="PrimeCup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Fe-A3-f0f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Home Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5S-hX-aku">
-                                <rect key="frame" x="16" y="16" width="343" height="38.5"/>
+                                <rect key="frame" x="16" y="32" width="343" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -174,7 +185,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="fcprime"/>
                                                 <connections>
-                                                    <segue destination="m0R-h0-Dd9" kind="show" id="i5V-ny-G8j"/>
+                                                    <action selector="handleFCPrimeSelected:" destination="MbE-vb-HZQ" eventType="touchUpInside" id="jIM-7z-AWu"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyE-NV-Lhu">
@@ -185,7 +196,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="croquetasutd"/>
                                                 <connections>
-                                                    <segue destination="m0R-h0-Dd9" kind="show" id="IIE-sS-JnO"/>
+                                                    <action selector="handleCroquetasUnitedSelected:" destination="MbE-vb-HZQ" eventType="touchUpInside" id="Mzj-20-fk9"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -201,7 +212,7 @@
                                                 </constraints>
                                                 <state key="normal" image="stickfc"/>
                                                 <connections>
-                                                    <segue destination="m0R-h0-Dd9" kind="show" id="U4d-zG-Hzh"/>
+                                                    <action selector="handleSticksFCSelected:" destination="MbE-vb-HZQ" eventType="touchUpInside" id="gJS-rX-cLs"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzk-OU-aep">
@@ -212,7 +223,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="pps"/>
                                                 <connections>
-                                                    <segue destination="m0R-h0-Dd9" kind="show" id="mC9-Hb-llU"/>
+                                                    <action selector="handlePowerPuffSquadSelected:" destination="MbE-vb-HZQ" eventType="touchUpInside" id="WDt-ZD-9Z6"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -222,7 +233,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="x5S-hX-aku" firstAttribute="top" secondItem="1S4-4V-Lbq" secondAttribute="top" constant="16" id="HBl-Bu-jUL"/>
+                            <constraint firstItem="x5S-hX-aku" firstAttribute="top" secondItem="1S4-4V-Lbq" secondAttribute="top" constant="32" id="HBl-Bu-jUL"/>
                             <constraint firstItem="x5S-hX-aku" firstAttribute="leading" secondItem="1S4-4V-Lbq" secondAttribute="leading" constant="16" id="L8p-n7-VRz"/>
                             <constraint firstItem="8Mo-LJ-WA2" firstAttribute="centerX" secondItem="8Fe-A3-f0f" secondAttribute="centerX" id="aKp-5E-d7k"/>
                             <constraint firstItem="8Mo-LJ-WA2" firstAttribute="centerY" secondItem="8Fe-A3-f0f" secondAttribute="centerY" id="iX1-EO-fk5"/>
@@ -230,6 +241,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1S4-4V-Lbq"/>
                     </view>
+                    <connections>
+                        <segue destination="m0R-h0-Dd9" kind="show" id="fCt-cH-5IY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1mn-On-KDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -395,7 +409,9 @@
                         <color key="badgeColor" red="0.30588235289999999" green="0.57254901960000004" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Standings" id="bUL-on-rcY">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="FaQ-zY-kfi"/>
+                        <barButtonItem key="rightBarButtonItem" title="Admin" id="S1f-JI-XXf">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="oStandingsTableView" destination="LE9-nO-buE" id="w2e-P3-OKw"/>
@@ -793,9 +809,9 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="overFullScreen" id="SWr-kp-ksI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="rux-yV-jD1">
-                        <barButtonItem key="rightBarButtonItem" title="Admin" id="kBV-1T-yiG">
+                        <barButtonItem key="rightBarButtonItem" title="Admin" id="eiN-9H-yLc">
                             <connections>
-                                <segue destination="RhF-g9-FRd" kind="show" id="ZFG-9u-wdY"/>
+                                <segue destination="RhF-g9-FRd" kind="show" id="sHi-vi-x9T"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -814,16 +830,16 @@
             </objects>
             <point key="canvasLocation" x="2801" y="-354"/>
         </scene>
-        <!--View Controller-->
+        <!--Select Away Team View Controller-->
         <scene sceneID="vGy-Cz-VLx">
             <objects>
-                <viewController id="m0R-h0-Dd9" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="selectAwayTeamVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m0R-h0-Dd9" customClass="SelectAwayTeamViewController" customModule="PrimeCup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="byr-jX-ex0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Away Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT2-E9-aob">
-                                <rect key="frame" x="16" y="16" width="343" height="38.5"/>
+                                <rect key="frame" x="16" y="32" width="343" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -842,7 +858,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="fcprime"/>
                                                 <connections>
-                                                    <segue destination="F9h-CP-oDB" kind="show" id="hAA-8H-s7a"/>
+                                                    <action selector="handleFCPrimeSelected:" destination="m0R-h0-Dd9" eventType="touchUpInside" id="vL0-lf-Lm9"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3M-nt-Kjx">
@@ -853,7 +869,7 @@
                                                 </constraints>
                                                 <state key="normal" image="croquetasutd"/>
                                                 <connections>
-                                                    <segue destination="F9h-CP-oDB" kind="show" id="2Na-Va-PHh"/>
+                                                    <action selector="handleCroquetasUnitedSelected:" destination="m0R-h0-Dd9" eventType="touchUpInside" id="7EQ-Bw-J4S"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -869,7 +885,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="stickfc"/>
                                                 <connections>
-                                                    <segue destination="F9h-CP-oDB" kind="show" id="a19-9B-1It"/>
+                                                    <action selector="handleSticksFCSelected:" destination="m0R-h0-Dd9" eventType="touchUpInside" id="KCH-AM-LN9"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TL4-BV-HPC">
@@ -880,7 +896,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="pps"/>
                                                 <connections>
-                                                    <segue destination="F9h-CP-oDB" kind="show" id="Abn-SY-mwY"/>
+                                                    <action selector="handlePowerPuffSquadSelected:" destination="m0R-h0-Dd9" eventType="touchUpInside" id="zQB-MN-ozR"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -893,26 +909,33 @@
                             <constraint firstItem="OvV-B6-Vg6" firstAttribute="trailing" secondItem="LT2-E9-aob" secondAttribute="trailing" constant="16" id="4LY-hl-KlT"/>
                             <constraint firstItem="Gf8-yA-yn7" firstAttribute="centerY" secondItem="byr-jX-ex0" secondAttribute="centerY" id="Feb-CE-dSd"/>
                             <constraint firstItem="Gf8-yA-yn7" firstAttribute="centerX" secondItem="byr-jX-ex0" secondAttribute="centerX" id="h5F-IC-Qgu"/>
-                            <constraint firstItem="LT2-E9-aob" firstAttribute="top" secondItem="OvV-B6-Vg6" secondAttribute="top" constant="16" id="ueQ-l3-EE7"/>
+                            <constraint firstItem="LT2-E9-aob" firstAttribute="top" secondItem="OvV-B6-Vg6" secondAttribute="top" constant="32" id="ueQ-l3-EE7"/>
                             <constraint firstItem="LT2-E9-aob" firstAttribute="leading" secondItem="OvV-B6-Vg6" secondAttribute="leading" constant="16" id="w3S-Xp-SdB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OvV-B6-Vg6"/>
                     </view>
+                    <connections>
+                        <outlet property="oCroquetasUnitedButton" destination="d3M-nt-Kjx" id="nAW-fQ-gRe"/>
+                        <outlet property="oFCPrimeButton" destination="PXu-LH-Vot" id="21M-8o-0MO"/>
+                        <outlet property="oPowerPuffSquadButton" destination="TL4-BV-HPC" id="p2Z-A3-ipU"/>
+                        <outlet property="oSticksFCButton" destination="0Po-Ot-60a" id="HcS-R3-xNt"/>
+                        <segue destination="F9h-CP-oDB" kind="show" id="soR-Uy-NoP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Y2-9q-Qyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5446" y="-1325"/>
         </scene>
-        <!--View Controller-->
+        <!--Set Score View Controller-->
         <scene sceneID="mmF-lh-16k">
             <objects>
-                <viewController id="F9h-CP-oDB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="setScoreVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="F9h-CP-oDB" customClass="SetScoreViewController" customModule="PrimeCup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bqG-w6-152">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHE-Yz-A0R">
-                                <rect key="frame" x="16" y="16" width="343" height="38.5"/>
+                                <rect key="frame" x="16" y="32" width="343" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -934,7 +957,7 @@
                                                 <rect key="frame" x="0.0" y="64" width="64" height="30"/>
                                                 <state key="normal" title="Add Goal"/>
                                                 <connections>
-                                                    <segue destination="hg9-Av-LOA" kind="show" id="nlJ-OP-1if"/>
+                                                    <action selector="goToAddGoalForHomeTeam:" destination="F9h-CP-oDB" eventType="touchUpInside" id="nDO-tI-GJ5"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -974,7 +997,7 @@
                                                 <rect key="frame" x="0.0" y="64" width="64" height="30"/>
                                                 <state key="normal" title="Add Goal"/>
                                                 <connections>
-                                                    <segue destination="hg9-Av-LOA" kind="show" id="fw7-Ug-R4x"/>
+                                                    <action selector="goToAddGoalForAwayTeam:" destination="F9h-CP-oDB" eventType="touchUpInside" id="lAW-dN-KFr"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -982,17 +1005,20 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6m-zW-TOS">
-                                <rect key="frame" x="97" y="552.5" width="181" height="34.5"/>
+                                <rect key="frame" x="97" y="552.5" width="181" height="18.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                 <state key="normal" title="Submit Match"/>
+                                <connections>
+                                    <action selector="handleSubmitMatch:" destination="F9h-CP-oDB" eventType="touchUpInside" id="lGG-D2-bU6"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3xZ-9O-52v">
                                 <rect key="frame" x="44" y="364.5" width="287" height="172"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="TopLeft" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Jyu-SN-0AC">
+                                    <stackView opaque="NO" contentMode="top" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Jyu-SN-0AC">
                                         <rect key="frame" x="0.0" y="0.0" width="167" height="172"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="topRight" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Gr-2l-Rgp">
+                                    <stackView opaque="NO" contentMode="top" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="5Gr-2l-Rgp">
                                         <rect key="frame" x="167" y="0.0" width="120" height="172"/>
                                     </stackView>
                                 </subviews>
@@ -1006,8 +1032,8 @@
                             <constraint firstAttribute="trailing" secondItem="2k5-TE-akN" secondAttribute="trailing" constant="44" id="DBS-59-PxH"/>
                             <constraint firstItem="2k5-TE-akN" firstAttribute="centerY" secondItem="bqG-w6-152" secondAttribute="centerY" id="G81-cA-m4a"/>
                             <constraint firstItem="m6m-zW-TOS" firstAttribute="top" secondItem="3xZ-9O-52v" secondAttribute="bottom" constant="16" id="J6d-v8-PeS"/>
-                            <constraint firstItem="VHE-Yz-A0R" firstAttribute="top" secondItem="AMT-Qv-36y" secondAttribute="top" constant="16" id="JZk-0h-Ra3"/>
-                            <constraint firstItem="AMT-Qv-36y" firstAttribute="bottom" secondItem="m6m-zW-TOS" secondAttribute="bottom" constant="16" id="Vzk-oq-iOh"/>
+                            <constraint firstItem="VHE-Yz-A0R" firstAttribute="top" secondItem="AMT-Qv-36y" secondAttribute="top" constant="32" id="JZk-0h-Ra3"/>
+                            <constraint firstItem="AMT-Qv-36y" firstAttribute="bottom" secondItem="m6m-zW-TOS" secondAttribute="bottom" constant="32" id="Vzk-oq-iOh"/>
                             <constraint firstItem="AMT-Qv-36y" firstAttribute="trailing" secondItem="3xZ-9O-52v" secondAttribute="trailing" constant="44" id="agq-7b-SWf"/>
                             <constraint firstItem="2k5-TE-akN" firstAttribute="centerX" secondItem="bqG-w6-152" secondAttribute="centerX" id="bk1-Tz-ON9"/>
                             <constraint firstItem="m6m-zW-TOS" firstAttribute="centerX" secondItem="bqG-w6-152" secondAttribute="centerX" id="pi5-jh-o83"/>
@@ -1016,21 +1042,30 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AMT-Qv-36y"/>
                     </view>
+                    <connections>
+                        <outlet property="oAwayScoreLabel" destination="9ID-dn-Kf1" id="gdo-1N-CkV"/>
+                        <outlet property="oAwayScorersStackView" destination="5Gr-2l-Rgp" id="kwf-wp-LTP"/>
+                        <outlet property="oAwayTeamLogoImageView" destination="LZw-Vf-jd4" id="Xgs-Zi-3YG"/>
+                        <outlet property="oHomeScoreLabel" destination="dey-5e-4mT" id="BlD-cg-NGl"/>
+                        <outlet property="oHomeScorersStackView" destination="Jyu-SN-0AC" id="f3I-7k-DYw"/>
+                        <outlet property="oHomeTeamLogoImageView" destination="tUk-9u-f29" id="VIW-1g-Uoi"/>
+                        <segue destination="hg9-Av-LOA" kind="show" id="cUT-37-C60"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RuV-S2-45l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6296.8000000000002" y="-1325.4872563718143"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Goal View Controller-->
         <scene sceneID="fb2-pN-4xo">
             <objects>
-                <viewController id="hg9-Av-LOA" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addGoalVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hg9-Av-LOA" customClass="AddGoalViewController" customModule="PrimeCup" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2kp-Db-ulO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Goal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAe-UZ-met">
-                                <rect key="frame" x="16" y="16" width="343" height="44"/>
+                                <rect key="frame" x="16" y="32" width="343" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Ugh-4O-5V9"/>
                                 </constraints>
@@ -1062,33 +1097,40 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylt-cC-CUj">
-                                <rect key="frame" x="16" y="543" width="343" height="44"/>
+                                <rect key="frame" x="16" y="527" width="343" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="fUg-jQ-cq0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="32"/>
                                 <state key="normal" title="Submit Goal"/>
+                                <connections>
+                                    <action selector="handleSubmitGoal:" destination="hg9-Av-LOA" eventType="touchUpInside" id="SBQ-zu-whV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HFg-q3-qwm" firstAttribute="trailing" secondItem="ylt-cC-CUj" secondAttribute="trailing" constant="16" id="40S-uv-0aI"/>
                             <constraint firstItem="ylt-cC-CUj" firstAttribute="leading" secondItem="HFg-q3-qwm" secondAttribute="leading" constant="16" id="8xc-MM-eMd"/>
-                            <constraint firstItem="HFg-q3-qwm" firstAttribute="bottom" secondItem="ylt-cC-CUj" secondAttribute="bottom" constant="16" id="H25-Px-MR1"/>
+                            <constraint firstItem="HFg-q3-qwm" firstAttribute="bottom" secondItem="ylt-cC-CUj" secondAttribute="bottom" constant="32" id="H25-Px-MR1"/>
                             <constraint firstItem="naL-GZ-a9m" firstAttribute="leading" secondItem="HFg-q3-qwm" secondAttribute="leading" constant="44" id="HTA-tK-xBb"/>
                             <constraint firstItem="naL-GZ-a9m" firstAttribute="centerY" secondItem="2kp-Db-ulO" secondAttribute="centerY" id="Wnb-tP-IB1"/>
                             <constraint firstItem="HFg-q3-qwm" firstAttribute="trailing" secondItem="WAe-UZ-met" secondAttribute="trailing" constant="16" id="du4-Ge-v62"/>
                             <constraint firstItem="naL-GZ-a9m" firstAttribute="centerX" secondItem="2kp-Db-ulO" secondAttribute="centerX" id="l9Z-zs-LFb"/>
-                            <constraint firstItem="WAe-UZ-met" firstAttribute="top" secondItem="HFg-q3-qwm" secondAttribute="top" constant="16" id="lSb-zs-3de"/>
+                            <constraint firstItem="WAe-UZ-met" firstAttribute="top" secondItem="HFg-q3-qwm" secondAttribute="top" constant="32" id="lSb-zs-3de"/>
                             <constraint firstItem="WAe-UZ-met" firstAttribute="leading" secondItem="HFg-q3-qwm" secondAttribute="leading" constant="16" id="of4-yY-6kn"/>
                             <constraint firstItem="HFg-q3-qwm" firstAttribute="trailing" secondItem="naL-GZ-a9m" secondAttribute="trailing" constant="44" id="ypi-uu-hzu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HFg-q3-qwm"/>
                     </view>
+                    <connections>
+                        <outlet property="oAssistTextField" destination="raS-oi-QZe" id="mJ2-oj-xMy"/>
+                        <outlet property="oScorerTextField" destination="WWe-Gz-ntx" id="TCx-Fg-jiW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z1p-by-A1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7135" y="-1325"/>
+            <point key="canvasLocation" x="7070" y="-1325"/>
         </scene>
     </scenes>
     <resources>
@@ -1100,9 +1142,4 @@
         <image name="standings" width="44" height="44"/>
         <image name="stickfc" width="347" height="347"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="nlJ-OP-1if"/>
-        <segue reference="a19-9B-1It"/>
-        <segue reference="mC9-Hb-llU"/>
-    </inferredMetricsTieBreakers>
 </document>

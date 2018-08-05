@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class MatchHistoryViewController: UITableViewController {
     
@@ -19,12 +20,43 @@ class MatchHistoryViewController: UITableViewController {
         }
     }
     
+    var ref: DatabaseReference?
+    
     @IBOutlet weak var oMatchHistoryTableView: UITableView!
     var matches: [Match]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.matches = self.databse.matches
+        ref = Database.database().reference()
+        ref?.child("matches").observe(DataEventType.value) { (snapshot) in
+            let data = snapshot.value as? [String: AnyObject] ?? [:]
+            
+            // TODO: - Parse data into something useful!
+            
+            for match in data {
+                
+                print(match)
+                let val = match.1
+                
+                
+//                let homeTeam = match["home_team"]
+//                let awayTeam = match["away_team"]
+//                let homeScore = match["home_score"]
+//                let awayScore = match["away_score"]
+//                var goals: [Goal]
+//
+//                guard let goalsDictionary = match["goals"] else { continue }
+//                for goal in goalsDictionary {
+//                    goals.append(Goal(scorer: goal["scorer"], assist: goal["assist"]))
+//                }
+
+//                let newMatch = Match(teams: (homeTeam, awayTeam), score: (homeScore, awayScore), goals: goals)
+                print("")
+            }
+//            database.matches = newMatch
+            self.updateViewFromModel()
+        }
         updateViewFromModel()
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class StandingsViewController: UITableViewController {
     
@@ -30,6 +31,13 @@ class StandingsViewController: UITableViewController {
         oStandingsTableView.tableFooterView = UIView()
         oStandingsTableView.reloadData()
     }
+    
+    func goToAdminLoginVC() {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "adminLoginVC") as! AdminLoginViewController
+        nextVC.database = self.database
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
 }
 
 extension StandingsViewController: UINavigationControllerDelegate, UITabBarDelegate {
