@@ -10,11 +10,15 @@ import Foundation
 
 class Goal: NSObject {
     
-    var scorer: Player
-    var assist: Player
+    var scorer: Player?
+    var assist: Player?
     
     init(scorer: Player, assist: Player) {
         self.scorer = scorer
         self.assist = assist
+    }
+    
+    override init() {
+        
     }
 }

@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 class MatchHistoryViewController: UITableViewController {
     
-    var databse: TeamPlayerDatabase {
+    var database: TeamPlayerDatabase {
         get {
             return (self.tabBarController!.viewControllers![0] as! StandingsViewController).database
         }
@@ -27,37 +27,74 @@ class MatchHistoryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.matches = self.databse.matches
-        ref = Database.database().reference()
-        ref?.child("matches").observe(DataEventType.value) { (snapshot) in
-            let data = snapshot.value as? [String: AnyObject] ?? [:]
-            
-            // TODO: - Parse data into something useful!
-            
-            for match in data {
-                
-                print(match)
-                let val = match.1
-                
-                
-//                let homeTeam = match["home_team"]
-//                let awayTeam = match["away_team"]
-//                let homeScore = match["home_score"]
-//                let awayScore = match["away_score"]
-//                var goals: [Goal]
-//
-//                guard let goalsDictionary = match["goals"] else { continue }
-//                for goal in goalsDictionary {
-//                    goals.append(Goal(scorer: goal["scorer"], assist: goal["assist"]))
-//                }
-
-//                let newMatch = Match(teams: (homeTeam, awayTeam), score: (homeScore, awayScore), goals: goals)
-                print("")
-            }
-//            database.matches = newMatch
-            self.updateViewFromModel()
-        }
+        self.matches = self.database.matches
+        handleDatabaseUpdates()
         updateViewFromModel()
+    }
+    
+    func handleDatabaseUpdates() {
+        ref = Database.database().reference()
+        guard let dbref = ref else { return }
+        
+        dbref.child("matches").observe(DataEventType.value) { (snapshot) in
+            self.database.matches = []
+            self.matches = []
+            self.database.resetTeams()
+            guard let data = snapshot.value as? NSDictionary else {
+                print("error getting data")
+                return
+            }
+            
+            for dat in data {
+                let datInfo = dat.value as! NSDictionary
+                print("dat info: \(datInfo)")
+                let awayTeam = datInfo["away_team"] as! String
+                let homeTeam = datInfo["home_team"] as! String
+                let awayScore = datInfo["away_score"] as! Int
+                let homeScore = datInfo["home_score"] as! Int
+                var goals: [Goal] = []
+                if datInfo["goals"] != nil {
+                    let goalsJSON = datInfo["goals"] as! NSDictionary
+                    for gl in goalsJSON {
+                        let goalInfo = gl.value as! NSDictionary
+                        let goalScorerString = goalInfo["scorer"] as! String
+                        let goalAssistString = goalInfo["assist"] as! String
+                        let goalTeamString = goalInfo["team"] as! String
+                        var goal = Goal()
+                        for player in self.database.players {
+                            if goalScorerString == player.name {
+                                player.goals += 1
+                                goal.scorer = player
+                            }
+                            if goalAssistString == player.name {
+                                player.assists += 1
+                                goal.assist = player
+                            }
+                        }
+                        goals.append(goal)
+                    }
+                }
+                
+                var homeTeamTeam: Team?
+                var awayTeamTeam: Team?
+                
+                for team in self.database.teams {
+                    if team.teamName == homeTeam {
+                        homeTeamTeam = team
+                    }
+                    if team.teamName == awayTeam {
+                        awayTeamTeam = team
+                    }
+                }
+                
+                let newMatch = Match(teams: (homeTeamTeam!, awayTeamTeam!), score: (homeScore, awayScore), goals: goals)
+                self.database.matches.append(newMatch)
+                self.matches = self.database.matches
+                print("added new match. updating view.")
+                self.updateViewFromModel()
+            }
+            
+        }
     }
     
     func updateViewFromModel() {
@@ -85,4 +122,18 @@ extension MatchHistoryViewController: UINavigationBarDelegate, UITabBarDelegate 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 121.5
     }
+}
+
+struct JSONMatch: Codable {
+    let awayScore: Int
+    let awayTeam: String
+    let homeScore: Int
+    let homeTeam: String
+    let goals: JSONGoal?
+}
+
+struct JSONGoal: Codable {
+    let assist: String
+    let scorer: String
+    let team: String
 }

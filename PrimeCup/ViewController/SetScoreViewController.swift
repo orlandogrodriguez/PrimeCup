@@ -41,9 +41,9 @@ class SetScoreViewController: UIViewController {
     
     func addGoal(goal: Goal) {
         match?.goals.append(goal)
-        if goal.scorer.team == homeTeam!.teamName {
+        if goal.scorer?.team == homeTeam!.teamName {
             addGoalForHomeTeam(goal: goal)
-        } else if goal.scorer.team == awayTeam!.teamName {
+        } else if goal.scorer?.team == awayTeam!.teamName {
             addGoalForAwayTeam(goal: goal)
         } else {
             print("There was an issue adding goal.")
@@ -52,14 +52,14 @@ class SetScoreViewController: UIViewController {
     
     func addGoalForHomeTeam(goal: Goal) {
         let scorerLabel = UILabel()
-        scorerLabel.text =   goal.scorer.name
+        scorerLabel.text =   goal.scorer?.name
         oHomeScorersStackView.addArrangedSubview(scorerLabel)
         updateViewFromModel()
     }
     
     func addGoalForAwayTeam(goal: Goal) {
         let scorerLabel = UILabel()
-        scorerLabel.text =   goal.scorer.name
+        scorerLabel.text =   goal.scorer?.name
         oAwayScorersStackView.addArrangedSubview(scorerLabel)
         updateViewFromModel()
     }
@@ -92,48 +92,55 @@ class SetScoreViewController: UIViewController {
         // TODO:
         
         let newMatchRef = self.ref.child("matches").childByAutoId()
+        newMatchRef.setValue(["home_team": self.homeTeam!.teamName,
+                              "away_team": self.awayTeam!.teamName,
+                             "home_score": self.match!.score.0,
+                             "away_score": self.match!.score.1])
         
-        newMatchRef.child("home_team").setValue(self.homeTeam!.teamName) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-        
-        newMatchRef.child("away_team").setValue(self.awayTeam!.teamName) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-        
-        newMatchRef.child("home_score").setValue(self.match!.score.0) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
-        
-        newMatchRef.child("away_score").setValue(self.match!.score.1) {
-            (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                print("Data could not be saved: \(error).")
-            } else {
-                print("Data saved successfully!")
-            }
-        }
+//        newMatchRef.child("home_team").setValue(self.homeTeam!.teamName) {
+//            (error:Error?, ref:DatabaseReference) in
+//            if let error = error {
+//                print("Data could not be saved: \(error).")
+//            } else {
+//                print("Data saved successfully!")
+//            }
+//        }
+//
+//        newMatchRef.child("away_team").setValue(self.awayTeam!.teamName) {
+//            (error:Error?, ref:DatabaseReference) in
+//            if let error = error {
+//                print("Data could not be saved: \(error).")
+//            } else {
+//                print("Data saved successfully!")
+//            }
+//        }
+//
+//        newMatchRef.child("home_score").setValue(self.match!.score.0) {
+//            (error:Error?, ref:DatabaseReference) in
+//            if let error = error {
+//                print("Data could not be saved: \(error).")
+//            } else {
+//                print("Data saved successfully!")
+//            }
+//        }
+//
+//        newMatchRef.child("away_score").setValue(self.match!.score.1) {
+//            (error:Error?, ref:DatabaseReference) in
+//            if let error = error {
+//                print("Data could not be saved: \(error).")
+//            } else {
+//                print("Data saved successfully!")
+//            }
+//        }
         
         for goal in match.goals {
             let goalRef = newMatchRef.child("goals").childByAutoId()
-            goalRef.child("scorer").setValue(goal.scorer.name)
-            goalRef.child("assist").setValue(goal.assist.name)
-            goalRef.child("team").setValue(goal.scorer.team)
+            goalRef.setValue(["scorer": goal.scorer?.name,
+                              "assist": goal.assist?.name,
+                              "team": goal.scorer?.team])
+//            goalRef.child("scorer").setValue(goal.scorer?.name)
+//            goalRef.child("assist").setValue(goal.assist?.name)
+//            goalRef.child("team").setValue(goal.scorer?.team)
         }
         
         

@@ -14,12 +14,12 @@ class Team: NSObject {
     // Properties
     var teamName: String
     var teamMembers: [Player]
-    var points: Int
-    var gamesPlayed: Int
-    var gamesWon: Int
-    var gamesTied: Int
-    var gamesLost: Int
-    var goalDifference: Int
+    var points: Int = 0
+    var gamesPlayed: Int = 0
+    var gamesWon: Int = 0
+    var gamesTied: Int = 0
+    var gamesLost: Int = 0
+    var goalDifference: Int = 0
     var teamLogo: UIImage?
     
     init(teamName: String, teamLogo: UIImage, teamMembers: [Player]) {

@@ -19,7 +19,6 @@ class TeamPlayerDatabase: NSObject {
         super.init()
         generateTeams()
         generatePlayers()
-        generateMatches()
     }
     
     func generateTeams() {
@@ -27,7 +26,6 @@ class TeamPlayerDatabase: NSObject {
         teams.append(Team(teamName: "Croquetas Utd.", teamLogo: #imageLiteral(resourceName: "croquetasutd"),teamMembers: []))
         teams.append(Team(teamName: "Sticks FC", teamLogo: #imageLiteral(resourceName: "stickfc"),teamMembers: []))
         teams.append(Team(teamName: "PPS", teamLogo: #imageLiteral(resourceName: "pps"),teamMembers: []))
-        
     }
     
     func generatePlayers() {
@@ -168,6 +166,17 @@ class TeamPlayerDatabase: NSObject {
         matches.append(Match(teams: (teams[1], teams[2]), score: (1, 0)))
         matches.append(Match(teams: (teams[3], teams[2]), score: (1, 1)))
         matches.append(Match(teams: (teams[0], teams[3]), score: (5, 1)))
+    }
+    
+    func resetTeams() {
+        for team in self.teams {
+            team.gamesPlayed = 0
+            team.gamesWon = 0
+            team.gamesLost = 0
+            team.gamesTied = 0
+            team.points = 0
+            team.goalDifference = 0
+        }
     }
     
     private func addToTeam(player: Player) {

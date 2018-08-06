@@ -8,11 +8,14 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class StandingsViewController: UITableViewController {
     
     var database = TeamPlayerDatabase()
     var teams: [Team] = []
+    
+    var ref: DatabaseReference?
     
     @IBOutlet var oStandingsTableView: UITableView!
     
@@ -23,7 +26,72 @@ class StandingsViewController: UITableViewController {
             let team2Points = team2.points + team2.goalDifference
             return team1Points > team2Points
         }
+        handleDatabaseUpdates()
         updateViewFromModel()
+    }
+    
+    func handleDatabaseUpdates() {
+        ref = Database.database().reference()
+        guard let dbref = ref else { return }
+        
+        dbref.child("matches").observe(DataEventType.value) { (snapshot) in
+            self.database.matches = []
+            self.database.resetTeams()
+            guard let data = snapshot.value as? NSDictionary else {
+                print("error getting data")
+                return
+            }
+            
+            for dat in data {
+                let datInfo = dat.value as! NSDictionary
+                print("dat info: \(datInfo)")
+                let awayTeam = datInfo["away_team"] as! String
+                let homeTeam = datInfo["home_team"] as! String
+                let awayScore = datInfo["away_score"] as! Int
+                let homeScore = datInfo["home_score"] as! Int
+                var goals: [Goal] = []
+                if datInfo["goals"] != nil {
+                    let goalsJSON = datInfo["goals"] as! NSDictionary
+                    for gl in goalsJSON {
+                        let goalInfo = gl.value as! NSDictionary
+                        let goalScorerString = goalInfo["scorer"] as! String
+                        let goalAssistString = goalInfo["assist"] as! String
+                        let goalTeamString = goalInfo["team"] as! String
+                        var goal = Goal()
+                        for player in self.database.players {
+                            if goalScorerString == player.name {
+                                player.goals += 1
+                                goal.scorer = player
+                            }
+                            if goalAssistString == player.name {
+                                player.assists += 1
+                                goal.assist = player
+                            }
+                        }
+                        goals.append(goal)
+                    }
+                }
+                
+                var homeTeamTeam: Team?
+                var awayTeamTeam: Team?
+                
+                for team in self.database.teams {
+                    if team.teamName == homeTeam {
+                        homeTeamTeam = team
+                    }
+                    if team.teamName == awayTeam {
+                        awayTeamTeam = team
+                    }
+                }
+                
+                let newMatch = Match(teams: (homeTeamTeam!, awayTeamTeam!), score: (homeScore, awayScore), goals: goals)
+                self.database.matches.append(newMatch)
+                // self.matches = self.database.matches
+                print("added new match. updating view.")
+                self.updateViewFromModel()
+            }
+            
+        }
     }
     
     func updateViewFromModel() {

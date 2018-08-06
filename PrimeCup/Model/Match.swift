@@ -23,17 +23,17 @@ class Match: NSObject {
             loser!.goalDifference -= abs(score.0 - score.1)
         }
     }
-    var score: (Int, Int)
+    var score: (Int, Int) = (0, 0)
     var goals: [Goal] = [] {
         didSet {
             print("Added goal")
-            if goals.last?.scorer.team == self.teams.0.teamName {
+            if goals.last?.scorer?.team == self.teams.0.teamName {
                 score.0 += 1
-            } else if goals.last?.scorer.team == self.teams.1.teamName {
+            } else if goals.last?.scorer?.team == self.teams.1.teamName {
                 score.1 += 1
             }
-            goals.last?.scorer.goals += 1
-            goals.last?.assist.assists += 1
+            goals.last?.scorer?.goals += 1
+            goals.last?.assist?.assists += 1
         }
     }
     
