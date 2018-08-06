@@ -19,6 +19,16 @@ class StandingsViewController: UITableViewController {
     
     @IBOutlet var oStandingsTableView: UITableView!
     
+    private var refresher: UIRefreshControl = UIRefreshControl()
+    private var loadingSpinnerView: UIView?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.refresher = UIRefreshControl()
+        self.refresher.addTarget(self, action: #selector(updateViewFromModel), for: .valueChanged)
+        self.oStandingsTableView.refreshControl = refresher
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         teams = database.teams.sorted { (team1: Team, team2: Team) -> Bool in
@@ -26,11 +36,24 @@ class StandingsViewController: UITableViewController {
             let team2Points = team2.points + team2.goalDifference
             return team1Points > team2Points
         }
-        handleDatabaseUpdates()
+        
+        handleDatabaseUpdates { (finished) in
+            if finished {
+                self.updateViewFromModel()
+                
+            } else {
+                print("No update needed.")
+            }
+            print("ending refresh")
+            self.refresher.endRefreshing()
+            if self.loadingSpinnerView != nil {
+                UIViewController.removeSpinner(spinner: self.loadingSpinnerView!)
+            }
+        }
         updateViewFromModel()
     }
     
-    func handleDatabaseUpdates() {
+    func handleDatabaseUpdates(completion: @escaping (Bool) -> ()) {
         ref = Database.database().reference()
         guard let dbref = ref else { return }
         
@@ -39,6 +62,7 @@ class StandingsViewController: UITableViewController {
             self.database.resetTeams()
             guard let data = snapshot.value as? NSDictionary else {
                 print("error getting data")
+                completion(false)
                 return
             }
             
@@ -88,16 +112,19 @@ class StandingsViewController: UITableViewController {
                 self.database.matches.append(newMatch)
                 // self.matches = self.database.matches
                 print("added new match. updating view.")
-                self.updateViewFromModel()
+                completion(true)
             }
             
         }
+        
     }
     
-    func updateViewFromModel() {
+    @objc func updateViewFromModel() {
+        self.refresher.beginRefreshing()
         self.tabBarController?.navigationItem.title = "Standings"
         oStandingsTableView.tableFooterView = UIView()
         oStandingsTableView.reloadData()
+        self.refresher.endRefreshing()
     }
     
     func goToAdminLoginVC() {

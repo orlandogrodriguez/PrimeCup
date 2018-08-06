@@ -20,19 +20,37 @@ class MatchHistoryViewController: UITableViewController {
         }
     }
     
+    private var refresher: UIRefreshControl = UIRefreshControl()
+    private var loadingSpinnerView: UIView?
+    
     var ref: DatabaseReference?
     
     @IBOutlet weak var oMatchHistoryTableView: UITableView!
     var matches: [Match]?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.refresher = UIRefreshControl()
+        self.refresher.addTarget(self, action: #selector(updateViewFromModel), for: .valueChanged)
+        self.oMatchHistoryTableView.refreshControl = refresher
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.matches = self.database.matches
-        handleDatabaseUpdates()
+        handleDatabaseUpdates { (finished) in
+            if finished {
+                self.updateViewFromModel()
+                self.refresher.endRefreshing()
+                UIViewController.removeSpinner(spinner: self.loadingSpinnerView!)
+            } else {
+                print("No update needed.")
+            }
+        }
         updateViewFromModel()
     }
     
-    func handleDatabaseUpdates() {
+    func handleDatabaseUpdates(completion: @escaping (Bool) -> ()) {
         ref = Database.database().reference()
         guard let dbref = ref else { return }
         
@@ -97,10 +115,12 @@ class MatchHistoryViewController: UITableViewController {
         }
     }
     
-    func updateViewFromModel() {
+    @objc func updateViewFromModel() {
+        self.refresher.beginRefreshing()
         self.tabBarController?.navigationItem.title = "Match History"
         oMatchHistoryTableView.tableFooterView = UIView()
         oMatchHistoryTableView.reloadData()
+        self.refresher.endRefreshing()
     }
 }
 
