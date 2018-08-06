@@ -64,6 +64,7 @@ class AddGoalViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         for playerS in playerTeam!.teamMembers {
             if oScorerTextField.text == playerS.name {
                 scorer = playerS
+                scorer?.goals += 1
                 break
             }
         }
@@ -72,6 +73,7 @@ class AddGoalViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         for playerA in playerTeam!.teamMembers {
             if oAssistTextField.text == playerA.name {
                 assist = playerA
+                assist?.assists += 1
                 break
             }
         }

@@ -49,6 +49,12 @@ class StandingsViewController: UITableViewController {
             if self.loadingSpinnerView != nil {
                 UIViewController.removeSpinner(spinner: self.loadingSpinnerView!)
             }
+            self.teams = self.database.teams.sorted { (team1: Team, team2: Team) -> Bool in
+                let team1Points = team1.points + team1.goalDifference
+                let team2Points = team2.points + team2.goalDifference
+                return team1Points > team2Points
+            }
+            self.updateViewFromModel()
         }
         updateViewFromModel()
     }

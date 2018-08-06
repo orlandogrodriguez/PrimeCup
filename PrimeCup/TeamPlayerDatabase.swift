@@ -35,6 +35,7 @@ class TeamPlayerDatabase: NSObject {
         var player = Player(name: "Dito", dateOfBirth: "07-01-1994", age: 24, country: "USA", team: "FC Prime", position: "GK")
         player.updatePlayerStats(pace: 87, drib: 80, def: 78, str: 76, sho: 77, pas: 72)
         player.setPlayerImage(image: #imageLiteral(resourceName: "dito"))
+        players.append(player)
         addToTeam(player: player)
         
         // Julian A. Rodriguez

@@ -33,6 +33,8 @@
 		0C516899211106DC009FAE9D /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C516898211106DC009FAE9D /* TeamViewController.swift */; };
 		0C51689B211274B0009FAE9D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C51689A211274B0009FAE9D /* PlayerViewController.swift */; };
 		0CE31EDB2117F3490099694F /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE31EDA2117F3490099694F /* UIViewController+ActivityIndicator.swift */; };
+		0CE31EDD2117FEE60099694F /* PlayerStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE31EDC2117FEE60099694F /* PlayerStatsCell.swift */; };
+		0CE31EDF211801F40099694F /* PlayerStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE31EDE211801F40099694F /* PlayerStatsViewController.swift */; };
 		75BD69FC1AF0044838BABBD6 /* Pods_PrimeCup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E2E2DF14DEE1BFA54D91838 /* Pods_PrimeCup.framework */; };
 		866BE08E7380E47D8635DF51 /* Pods_PrimeCupUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1770D47CFA960447AE85E2F5 /* Pods_PrimeCupUITests.framework */; };
 		A8A419A2BB06D430E652E7A2 /* Pods_PrimeCupTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3375E72703CCA1C06C04622F /* Pods_PrimeCupTests.framework */; };
@@ -89,6 +91,8 @@
 		0C516898211106DC009FAE9D /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		0C51689A211274B0009FAE9D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		0CE31EDA2117F3490099694F /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		0CE31EDC2117FEE60099694F /* PlayerStatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsCell.swift; sourceTree = "<group>"; };
+		0CE31EDE211801F40099694F /* PlayerStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsViewController.swift; sourceTree = "<group>"; };
 		0E2E2DF14DEE1BFA54D91838 /* Pods_PrimeCup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrimeCup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		170CB3D9E6315F5828C74EA0 /* Pods-PrimeCupUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrimeCupUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PrimeCupUITests/Pods-PrimeCupUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1770D47CFA960447AE85E2F5 /* Pods_PrimeCupUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrimeCupUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +212,7 @@
 				0C3B66592115698200E047FB /* SelectAwayTeamViewController.swift */,
 				0C3B665B211569AD00E047FB /* SetScoreViewController.swift */,
 				0C3B665D21156A1A00E047FB /* AddGoalViewController.swift */,
+				0CE31EDE211801F40099694F /* PlayerStatsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 				0C477B26210FAC7E0062C44A /* StandingsCell.swift */,
 				0C477B282110149D0062C44A /* HistoryCell.swift */,
 				0C516896211104B9009FAE9D /* PlayerCell.swift */,
+				0CE31EDC2117FEE60099694F /* PlayerStatsCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -466,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C477B27210FAC7E0062C44A /* StandingsCell.swift in Sources */,
+				0CE31EDD2117FEE60099694F /* PlayerStatsCell.swift in Sources */,
 				0C477AF2210F99E80062C44A /* StandingsViewController.swift in Sources */,
 				0C3B6658211568E800E047FB /* SelectHomeTeamViewController.swift in Sources */,
 				0C477AF0210F99E80062C44A /* AppDelegate.swift in Sources */,
@@ -475,6 +482,7 @@
 				0C51689B211274B0009FAE9D /* PlayerViewController.swift in Sources */,
 				0C477B2C211016700062C44A /* MatchHistoryViewController.swift in Sources */,
 				0C477B25210F9F3D0062C44A /* TeamPlayerDatabase.swift in Sources */,
+				0CE31EDF211801F40099694F /* PlayerStatsViewController.swift in Sources */,
 				0C3B665E21156A1A00E047FB /* AddGoalViewController.swift in Sources */,
 				0C3B665A2115698200E047FB /* SelectAwayTeamViewController.swift in Sources */,
 				0C3B665221151ADD00E047FB /* AdminLoginViewController.swift in Sources */,
