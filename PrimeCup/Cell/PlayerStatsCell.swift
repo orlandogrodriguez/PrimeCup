@@ -17,6 +17,9 @@ class PlayerStatsCell: UITableViewCell {
     
     func setPlayer(player: Player) {
         oPlayerPictureImageView.image = player.playerImage
+        oPlayerPictureImageView.layer.cornerRadius = oPlayerPictureImageView.frame.width / 2
+        oPlayerPictureImageView.layer.masksToBounds = true
+        oPlayerPictureImageView.layoutIfNeeded()
         oPlayerNameLabel.text = player.name
         oPlayerGoalsLabel.text = String(player.goals)
         oPlayerAssistsLabel.text = String(player.assists)

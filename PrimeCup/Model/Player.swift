@@ -53,6 +53,7 @@ class Player: NSObject {
     
     func setPlayerImage(image: UIImage) {
         self.playerImage = image
+
     }
     
 }

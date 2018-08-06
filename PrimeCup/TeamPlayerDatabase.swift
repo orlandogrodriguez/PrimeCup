@@ -48,18 +48,21 @@ class TeamPlayerDatabase: NSObject {
         // Isabel L. Rodriguez
         player = Player(name: "Isabel", dateOfBirth: "04-01-1998", age: 20, country: "USA", team: "FC Prime", position: "CF")
         player.updatePlayerStats(pace: 68, drib: 67, def: 73, str: 65, sho: 74, pas: 69)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "isa"))
         players.append(player)
         addToTeam(player: player)
         
         // Luis A. Garcia
         player = Player(name: "Alejandro", dateOfBirth: "07-23-2000", age: 18, country: "Puerto Rico", team: "FC Prime", position: "CM")
         player.updatePlayerStats(pace: 72, drib: 82, def: 78, str: 81, sho: 81, pas: 84)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "alejandro"))
         players.append(player)
         addToTeam(player: player)
         
         // Sebatian Requena
         player = Player(name: "Sebastian", dateOfBirth: "01-02-1996", age: 22, country: "USA", team: "FC Prime", position: "CDM")
         player.updatePlayerStats(pace: 79, drib: 87, def: 86, str: 84, sho: 87, pas: 90)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "seba"))
         players.append(player)
         addToTeam(player: player)
         
@@ -68,6 +71,7 @@ class TeamPlayerDatabase: NSObject {
         //var gkStatLabels = ["Diving", "Handling", "Kicking", "Reflexes", "Speed", "Positioning"]
         player = Player(name: "Monti", dateOfBirth: "08-02-1995", age: 23, country: "Puerto Rico", team: "Croquetas Utd.", position: "GK")
         player.updatePlayerStats(pace: 83, drib: 90, def: 80, str: 81, sho: 79, pas: 86)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "monti"))
         players.append(player)
         addToTeam(player: player)
         
@@ -86,6 +90,7 @@ class TeamPlayerDatabase: NSObject {
         // Jose Irizzarri
         player = Player(name: "Irizarri", dateOfBirth: "08-02-1995", age: 99, country: "Puerto Rico", team: "Croquetas Utd.", position: "LB")
         player.updatePlayerStats(pace: 74, drib: 75, def: 84, str: 82, sho: 66, pas: 76)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "irizarri"))
         players.append(player)
         addToTeam(player: player)
         
@@ -98,37 +103,42 @@ class TeamPlayerDatabase: NSObject {
         // Jose Santiago
         player = Player(name: "Jose Santiago", dateOfBirth: "08-02-1995", age: 23, country: "Puerto Rico", team: "Sticks FC", position: "CB")
         player.updatePlayerStats(pace: 92, drib: 80, def: 94, str: 88, sho: 78, pas: 81)
-        player.setPlayerImage(image: #imageLiteral(resourceName: "jose"))
+        player.setPlayerImage(image: #imageLiteral(resourceName: "jose-1"))
         players.append(player)
         addToTeam(player: player)
         
         // Ari
         player = Player(name: "Ari", dateOfBirth: "08-02-1995", age: 22, country: "Puerto Rico", team: "Sticks FC", position: "LW")
         player.updatePlayerStats(pace: 80, drib: 81, def: 70, str: 79, sho: 82, pas: 77)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "ari"))
         players.append(player)
         addToTeam(player: player)
         
         // Brandon
         player = Player(name: "Brandon", dateOfBirth: "08-02-1995", age: 22, country: "Puerto Rico", team: "Sticks FC", position: "CAM")
         player.updatePlayerStats(pace: 82, drib: 91, def: 70, str: 79, sho: 85, pas: 88)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "brandon"))
         players.append(player)
         addToTeam(player: player)
         
         // Chewys
         player = Player(name: "Chewys", dateOfBirth: "08-02-1995", age: 23, country: "Puerto Rico", team: "Sticks FC", position: "GK")
         player.updatePlayerStats(pace: 82, drib: 85, def: 99, str: 71, sho: 78, pas: 66)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "chewys"))
         players.append(player)
         addToTeam(player: player)
         
         // Ale
         player = Player(name: "Alexandra", dateOfBirth: "08-02-1995", age: 23, country: "Puerto Rico", team: "Sticks FC", position: "ST")
         player.updatePlayerStats(pace: 70, drib: 66, def: 78, str: 62, sho: 73, pas: 76)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "ale"))
         players.append(player)
         addToTeam(player: player)
         
         // Juanga
         player = Player(name: "Juanga", dateOfBirth: "08-02-1995", age: 23, country: "Puerto Rico", team: "PPS", position: "LM")
         player.updatePlayerStats(pace: 80, drib: 96, def: 81, str: 79, sho: 86, pas: 94)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "juanga"))
         players.append(player)
         addToTeam(player: player)
         
@@ -136,11 +146,13 @@ class TeamPlayerDatabase: NSObject {
         player = Player(name: "Jorge", dateOfBirth: "08-02-1995", age: 23, country: "Puerto Rico", team: "PPS", position: "CDM")
         player.updatePlayerStats(pace: 74, drib: 78, def: 82, str: 84, sho: 87, pas: 80)
         players.append(player)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "jorge"))
         addToTeam(player: player)
         
         // Flan
         player = Player(name: "Flan", dateOfBirth: "08-02-1995", age: 23, country: "Puerto Rico", team: "PPS", position: "CB")
         player.updatePlayerStats(pace: 93, drib: 80, def: 97, str: 95, sho: 83, pas: 87)
+        player.setPlayerImage(image: #imageLiteral(resourceName: "flan"))
         players.append(player)
         addToTeam(player: player)
         

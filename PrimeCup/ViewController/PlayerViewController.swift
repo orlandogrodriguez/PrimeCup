@@ -23,11 +23,12 @@ class PlayerViewController: UIViewController, TKRadarChartDataSource, TKRadarCha
 
         guard let player = player else { return }
         oPlayerPictureImageView.image = player.playerImage
-        oPlayerPictureImageView.layer.cornerRadius = 64
-        oPlayerPictureImageView.layer.masksToBounds = true
         oPlayerNameLabel.text = player.name + " : \(player.position)"
         oPlayerAverageStatsLabel.text = String(player.averageStats)
         
+        
+        oPlayerPictureImageView.layer.masksToBounds = true
+        oPlayerPictureImageView.layoutIfNeeded()
         let w = view.bounds.width
         let y = oTopSectionView.frame.maxY
         let chart = TKRadarChart(frame: CGRect(x: 0, y: 0, width: w, height: w))

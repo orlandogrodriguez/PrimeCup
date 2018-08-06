@@ -20,6 +20,12 @@ class AdminLoginViewController: UIViewController {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        oUsernameTextField.layer.cornerRadius = 8
+        oUsernameTextField.layer.masksToBounds = true
+        oUsernameTextField.layoutIfNeeded()
+        oPasswordTextField.layer.cornerRadius = 8
+        oPasswordTextField.layer.masksToBounds = true
+        oPasswordTextField.layoutIfNeeded()
 
     }
     
