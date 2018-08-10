@@ -32,9 +32,6 @@ class TeamPlayerDatabase: NSObject {
                     print("Error loading players from database.")
                 }
             })
-//            self.generateTeams()
-//            self.generatePlayers()
-//            self.addPlayersToFirebase()
         }
     }
     
@@ -266,7 +263,6 @@ class TeamPlayerDatabase: NSObject {
                 let player = playerDict.value as! NSDictionary
                 let imageURLExtension = player["image_url_extension"] as! String
                 let playerAssists = player["player_assists"] as! Int
-                let playerAverage = player["player_average"] as! Int
                 let playerDefense = player["player_defense"] as! Int
                 let playerDribbling = player["player_dribbling"] as! Int
                 let playerGoals = player["player_goals"] as! Int
@@ -283,7 +279,6 @@ class TeamPlayerDatabase: NSObject {
                 newPlayer.goals = playerGoals
                 newPlayer.assists = playerAssists
                 newPlayer.playerIDString = imageURLExtension
-                newPlayer.averageStats = playerAverage
                 newPlayer.playerImage = #imageLiteral(resourceName: "Default Player Image")
             
                 self.players.append(newPlayer)

@@ -60,7 +60,12 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let index = self.oPlayersTableView.indexPathForSelectedRow{
+            self.oPlayersTableView.deselectRow(at: index, animated: true)
+        }
+    }
 
     
     func handleDatabaseUpdates(completion: @escaping (Bool) -> ()) {

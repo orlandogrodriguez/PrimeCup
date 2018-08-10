@@ -9,6 +9,7 @@
 import UIKit
 import TKRadarChart
 
+
 class PlayerViewController: UIViewController, TKRadarChartDataSource, TKRadarChartDelegate, UITableViewDelegate {
     
     var player: Player?
@@ -66,7 +67,6 @@ class PlayerViewController: UIViewController, TKRadarChartDataSource, TKRadarCha
     func valueOfSectionForRadarChart(withRow row: Int, section: Int) -> CGFloat {
 
         var stats = [player!.pace, player!.sho, player!.pas, player!.drib, player!.def, player!.str]
-        let stat = (Double(stats[row] - 25) / 75.0) * 5.0
         let statNoScale = Double(stats[row]) / 20.0
         return CGFloat(statNoScale)
     }
