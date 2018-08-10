@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseStorage
 
 class TeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,12 +18,23 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var oPlayersTableView: UITableView!
     @IBOutlet weak var oStarsView: UIView!
     @IBOutlet weak var oStarsConstraint: NSLayoutConstraint!
+    @IBOutlet weak var oScrollView: UIScrollView!
+    
+    @IBOutlet weak var oTopSectionView: UIView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         oPlayersTableView.delegate = self
         oPlayersTableView.dataSource = self
+        
+        
+        
+        
+        handleDatabaseUpdates { (finished) in
+            print("\(finished)")
+        }
+        
         if let team = team {
             oTeamLogoImageView.image = team.teamLogo
             oTeamNameLabel.text = team.teamName
@@ -45,6 +58,34 @@ class TeamViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         }
         
+    }
+
+    
+
+    
+    func handleDatabaseUpdates(completion: @escaping (Bool) -> ()) {
+        let storage = Storage.storage().reference()
+        guard let team = self.team else {
+            print("No team available! Check out this bug.")
+            return
+        }
+        for player in team.teamMembers {
+            var newPlayerImage: UIImage?
+            let newPlayerImageReference = storage.child("\(player.playerIDString).png")
+            newPlayerImageReference.getData(maxSize: 3 * 1024 * 1024, completion: { (data, error) in
+                if let error = error {
+                    print("------error getting picture for player.------")
+                    print(error.localizedDescription)
+                    completion(false)
+                } else {
+                    newPlayerImage = UIImage(data: data!)
+                    player.setPlayerImage(image: newPlayerImage!)
+                    print("successfully added picture for \(player.playerIDString)")
+                    self.oPlayersTableView.reloadData()
+                    completion(true)
+                }
+            })
+        }
     }
 
 

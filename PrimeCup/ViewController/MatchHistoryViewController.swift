@@ -28,11 +28,28 @@ class MatchHistoryViewController: UITableViewController {
     @IBOutlet weak var oMatchHistoryTableView: UITableView!
     var matches: [Match]?
     
+    @IBOutlet weak var oEmptyTableLabel: UILabel?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.refresher = UIRefreshControl()
         self.refresher.addTarget(self, action: #selector(updateViewFromModel), for: .valueChanged)
         self.oMatchHistoryTableView.refreshControl = refresher
+        self.tabBarController?.navigationItem.title = "Match History"
+        
+        oEmptyTableLabel = UILabel(frame: CGRect(x: 0, y: self.view.frame.height - 16 / 2, width: self.view.frame.width, height: 32))
+        oEmptyTableLabel?.textColor = .gray
+        guard let matches = matches else {
+            self.view.layoutIfNeeded()
+            return
+        }
+        if matches.count == 0 {
+            oEmptyTableLabel?.text = "No matches yet!"
+        } else {
+            oEmptyTableLabel?.text = ""
+        }
+        
+        self.view.layoutIfNeeded()
     }
     
     override func viewDidLoad() {

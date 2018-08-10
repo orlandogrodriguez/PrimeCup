@@ -90,6 +90,7 @@
 		0C516896211104B9009FAE9D /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		0C516898211106DC009FAE9D /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		0C51689A211274B0009FAE9D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		0CA3D264211A614F00139929 /* PrimeCup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrimeCup.entitlements; sourceTree = "<group>"; };
 		0CE31EDA2117F3490099694F /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		0CE31EDC2117FEE60099694F /* PlayerStatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsCell.swift; sourceTree = "<group>"; };
 		0CE31EDE211801F40099694F /* PlayerStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 		0C477AEE210F99E80062C44A /* PrimeCup */ = {
 			isa = PBXGroup;
 			children = (
+				0CA3D264211A614F00139929 /* PrimeCup.entitlements */,
 				0C477AEF210F99E80062C44A /* AppDelegate.swift */,
 				0C5168952110C471009FAE9D /* Cell */,
 				0C5168942110C455009FAE9D /* Model */,
@@ -324,6 +326,11 @@
 				TargetAttributes = {
 					0C477AEB210F99E80062C44A = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					0C477AFF210F99EA0062C44A = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -666,6 +673,7 @@
 			baseConfigurationReference = 76583FCC928E2CC9779DE7A6 /* Pods-PrimeCup.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PrimeCup/PrimeCup.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L8DCU292HF;
 				INFOPLIST_FILE = PrimeCup/Info.plist;
@@ -677,7 +685,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.orlyrodz.PrimeCup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -686,6 +694,7 @@
 			baseConfigurationReference = 894297F4558DB3309AAFB910 /* Pods-PrimeCup.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PrimeCup/PrimeCup.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L8DCU292HF;
 				INFOPLIST_FILE = PrimeCup/Info.plist;
@@ -697,7 +706,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.orlyrodz.PrimeCup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

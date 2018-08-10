@@ -27,6 +27,8 @@ class StandingsViewController: UITableViewController {
         self.refresher = UIRefreshControl()
         self.refresher.addTarget(self, action: #selector(updateViewFromModel), for: .valueChanged)
         self.oStandingsTableView.refreshControl = refresher
+        self.tabBarController?.navigationItem.title = "Standings"
+        self.view.layoutIfNeeded()
     }
     
     override func viewDidLoad() {

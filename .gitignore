@@ -22,6 +22,7 @@ xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 *.xcschememanagement.plist
+*.entitlements
 
 ## Obj-C/Swift specific
 *.hmap

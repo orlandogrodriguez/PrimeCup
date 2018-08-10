@@ -35,7 +35,7 @@ class PlayerViewController: UIViewController, TKRadarChartDataSource, TKRadarCha
         chart.configuration.radius = (w - 64) / 3
         chart.dataSource = self
         chart.delegate = self
-        chart.center = CGPoint(x: view.center.x, y: y + (w / 3) + 16)
+        chart.center = CGPoint(x: view.center.x, y: y + (w / 3) + 64)
         chart.reloadData()
         view.addSubview(chart)
         
