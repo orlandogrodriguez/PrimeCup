@@ -21,6 +21,12 @@ class Player: NSObject {
     var playerImage: UIImage?
     var goals: Int = 0
     var assists: Int = 0
+    var playerID = "-1" {
+        didSet {
+            playerIDString = "player\(playerID)"
+        }
+    }
+    var playerIDString = ""
     
     // Player Stats
     private(set) var pace: Int = 0

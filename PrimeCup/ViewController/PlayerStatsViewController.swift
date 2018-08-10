@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class PlayerStatsViewController: UIViewController {
     
@@ -14,13 +15,62 @@ class PlayerStatsViewController: UIViewController {
     
     @IBOutlet weak var oPlayerStatsTableView: UITableView!
     
+    private var refresher: UIRefreshControl = UIRefreshControl()
+    private var loadingSpinnerView: UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.players = (self.tabBarController!.viewControllers![0] as! StandingsViewController).database.players
         oPlayerStatsTableView.delegate = self
         oPlayerStatsTableView.dataSource = self
         
+        self.refresher = UIRefreshControl()
+        self.refresher.addTarget(self, action: #selector(updateViewFromModel), for: .valueChanged)
+        self.oPlayerStatsTableView.refreshControl = refresher
+        
+        handleDatabaseUpdates { (finished) in
+            print("finished: \(finished)")
+        }
+        
+        
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.title = "Top Players"
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc func updateViewFromModel() {
+        self.refresher.beginRefreshing()
+        self.tabBarController?.navigationItem.title = "Top Players"
+        oPlayerStatsTableView.tableFooterView = UIView()
+        oPlayerStatsTableView.reloadData()
+        self.refresher.endRefreshing()
+    }
+    
+    func handleDatabaseUpdates(completion: @escaping (Bool) -> ()) {
+        let storage = Storage.storage().reference()
+        
+        for player in players {
+            var newPlayerImage: UIImage?
+            let newPlayerImageReference = storage.child("\(player.playerIDString).png")
+            newPlayerImageReference.getData(maxSize: 3 * 1024 * 1024, completion: { (data, error) in
+                if let error = error {
+                    print("------error getting picture for player.------")
+                    print(error.localizedDescription)
+                    completion(false)
+                } else {
+                    newPlayerImage = UIImage(data: data!)
+                    player.setPlayerImage(image: newPlayerImage!)
+                    print("successfully added picture for \(player.playerIDString)")
+                    self.oPlayerStatsTableView.reloadData()
+                    completion(true)
+                }
+            })
+        }
     }
 
 }
