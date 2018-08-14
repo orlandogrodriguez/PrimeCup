@@ -42,9 +42,14 @@ class AdminHomeViewController: UIViewController {
         let auth = Auth.auth()
         if auth.currentUser != nil {
             do {
-                try auth.signOut()
-                self.navigationController?.popViewController(animated: true)
-                self.navigationController?.popViewController(animated: true)
+                //try auth.signOut()
+//                self.navigationController?.popViewController(animated: true)
+//                self.navigationController?.popViewController(animated: true)
+                
+                let vcCount = self.navigationController?.viewControllers.count
+                let standingsVC = self.navigationController?.viewControllers[vcCount! - 3] as! UITabBarController
+                self.navigationController?.popToViewController(standingsVC, animated: true)
+                
                 print("Admin signed out.")
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)

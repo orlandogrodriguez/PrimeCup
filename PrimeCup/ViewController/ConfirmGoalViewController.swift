@@ -19,6 +19,8 @@ class ConfirmGoalViewController: UIViewController {
     @IBOutlet weak var oScorerLabel: UILabel!
     @IBOutlet weak var oAssistImageView: UIImageView!
     @IBOutlet weak var oAssistLabel: UILabel!
+    @IBOutlet weak var oAssistByLabel: UILabel!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,7 +36,11 @@ class ConfirmGoalViewController: UIViewController {
         oTeamNameLabel.text = scorer?.team
         oScorerImageView.image = scorer?.playerImage
         oScorerLabel.text = scorer?.name
-        guard let assist = assist else { return }
+        guard let assist = assist else {
+            oAssistByLabel.text = "No Assist"
+            oAssistLabel.text = ""
+            return
+        }
         oAssistImageView.image = assist.playerImage
         oAssistLabel.text = assist.name
     }
@@ -42,6 +48,8 @@ class ConfirmGoalViewController: UIViewController {
     @IBAction func handleConfirmGoal(_ sender: UIButton) {
         if scorer != nil && assist != nil {
             self.goal = Goal(scorer: scorer!, assist: assist!)
+        } else if assist == nil {
+            self.goal = Goal(scorer: scorer!, assist: nil)
         }
         goToSetScoreVC()
     }

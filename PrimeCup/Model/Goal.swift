@@ -13,8 +13,9 @@ class Goal: NSObject {
     var scorer: Player?
     var assist: Player?
     
-    init(scorer: Player, assist: Player) {
+    init(scorer: Player, assist: Player?) {
         self.scorer = scorer
+        guard let assist = assist else { return }
         self.assist = assist
     }
     

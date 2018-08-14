@@ -1456,6 +1456,7 @@
                         <viewLayoutGuide key="safeArea" id="Ud3-RF-nnU"/>
                     </view>
                     <connections>
+                        <outlet property="oAssistByLabel" destination="NwJ-W3-LTp" id="tS4-3V-cxb"/>
                         <outlet property="oAssistImageView" destination="IaN-cD-Z4T" id="nCI-ug-972"/>
                         <outlet property="oAssistLabel" destination="9Uo-qx-Ff7" id="PdR-DV-B0e"/>
                         <outlet property="oScorerImageView" destination="Igk-hP-2T7" id="bZ7-Do-g4g"/>
