@@ -20,13 +20,23 @@ class ConfirmGoalViewController: UIViewController {
     @IBOutlet weak var oAssistImageView: UIImageView!
     @IBOutlet weak var oAssistLabel: UILabel!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        oScorerImageView.layer.cornerRadius = oScorerImageView.frame.width / 2
+        oScorerImageView.clipsToBounds = true
+        oAssistImageView.layer.cornerRadius = oAssistImageView.frame.width / 2
+        oAssistImageView.clipsToBounds = true
+        self.view.layoutSubviews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         oTeamNameLabel.text = scorer?.team
         oScorerImageView.image = scorer?.playerImage
         oScorerLabel.text = scorer?.name
-        oAssistImageView.image = assist?.playerImage
-        oAssistLabel.text = assist?.name
+        guard let assist = assist else { return }
+        oAssistImageView.image = assist.playerImage
+        oAssistLabel.text = assist.name
     }
     
     @IBAction func handleConfirmGoal(_ sender: UIButton) {

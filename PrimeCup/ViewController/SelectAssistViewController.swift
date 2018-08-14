@@ -23,9 +23,9 @@ class SelectAssistViewController: UIViewController {
     @IBAction func handleNoAssist(_ sender: UIButton) {
         // TODO: Update this to handle no assist.
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "confirmGoalVC") as! ConfirmGoalViewController
-        nextVC.assist = self.scorer
+        nextVC.assist = nil
         nextVC.scorer = self.scorer
-        self.navigationController?.pushViewController(nextVC, animated: true) as! ConfirmGoalViewController
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
 }
