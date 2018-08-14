@@ -18,6 +18,13 @@ class AdminLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Auth.auth().currentUser != nil {
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "adminHomeVC") as! AdminHomeViewController
+            nextVC.database = self.database
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         oUsernameTextField.layer.cornerRadius = 8
@@ -43,6 +50,4 @@ class AdminLoginViewController: UIViewController {
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
     }
-    
-
 }

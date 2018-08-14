@@ -70,13 +70,13 @@ class SetScoreViewController: UIViewController {
     }
     
     @IBAction func goToAddGoalForHomeTeam(_ sender: UIButton) {
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "addGoalVC") as! AddGoalViewController
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "selectScorerVC") as! SelectScorerViewController
         nextVC.playerTeam = homeTeam
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @IBAction func goToAddGoalForAwayTeam(_ sender: UIButton) {
-        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "addGoalVC") as! AddGoalViewController
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "selectScorerVC") as! SelectScorerViewController
         nextVC.playerTeam = awayTeam
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -88,69 +88,34 @@ class SetScoreViewController: UIViewController {
             return
         }
         
-        
-        // TODO:
-        
         let newMatchRef = self.ref.child("matches").childByAutoId()
         newMatchRef.setValue(["home_team": self.homeTeam!.teamName,
                               "away_team": self.awayTeam!.teamName,
                              "home_score": self.match!.score.0,
                              "away_score": self.match!.score.1])
         
-//        newMatchRef.child("home_team").setValue(self.homeTeam!.teamName) {
-//            (error:Error?, ref:DatabaseReference) in
-//            if let error = error {
-//                print("Data could not be saved: \(error).")
-//            } else {
-//                print("Data saved successfully!")
-//            }
-//        }
-//
-//        newMatchRef.child("away_team").setValue(self.awayTeam!.teamName) {
-//            (error:Error?, ref:DatabaseReference) in
-//            if let error = error {
-//                print("Data could not be saved: \(error).")
-//            } else {
-//                print("Data saved successfully!")
-//            }
-//        }
-//
-//        newMatchRef.child("home_score").setValue(self.match!.score.0) {
-//            (error:Error?, ref:DatabaseReference) in
-//            if let error = error {
-//                print("Data could not be saved: \(error).")
-//            } else {
-//                print("Data saved successfully!")
-//            }
-//        }
-//
-//        newMatchRef.child("away_score").setValue(self.match!.score.1) {
-//            (error:Error?, ref:DatabaseReference) in
-//            if let error = error {
-//                print("Data could not be saved: \(error).")
-//            } else {
-//                print("Data saved successfully!")
-//            }
-//        }
-        
         for goal in match.goals {
             let goalRef = newMatchRef.child("goals").childByAutoId()
             goalRef.setValue(["scorer": goal.scorer?.name,
                               "assist": goal.assist?.name,
                               "team": goal.scorer?.team])
-//            goalRef.child("scorer").setValue(goal.scorer?.name)
-//            goalRef.child("assist").setValue(goal.assist?.name)
-//            goalRef.child("team").setValue(goal.scorer?.team)
         }
-        
-        
-        
+    
         let alert = UIAlertController(title: "Match Created Successfully", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
             self.goToAdminHomeVC()
         }))
         self.present(alert, animated: true)
         
+    }
+    
+    @IBAction func handleCancelMatch(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Are you sure you want to cancel this match?", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
+            self.goToAdminHomeVC()
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
     func goToAdminHomeVC() {

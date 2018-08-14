@@ -32,6 +32,11 @@
 		0C516897211104B9009FAE9D /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C516896211104B9009FAE9D /* PlayerCell.swift */; };
 		0C516899211106DC009FAE9D /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C516898211106DC009FAE9D /* TeamViewController.swift */; };
 		0C51689B211274B0009FAE9D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C51689A211274B0009FAE9D /* PlayerViewController.swift */; };
+		0C949DFE21227A92004C9982 /* SelectScorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C949DFD21227A92004C9982 /* SelectScorerViewController.swift */; };
+		0C949E0021227B22004C9982 /* ScorerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C949DFF21227B22004C9982 /* ScorerTableViewCell.swift */; };
+		0C949E0221227B8B004C9982 /* AssistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C949E0121227B8B004C9982 /* AssistTableViewCell.swift */; };
+		0C949E0421227EF8004C9982 /* SelectAssistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C949E0321227EF8004C9982 /* SelectAssistViewController.swift */; };
+		0C949E0621228170004C9982 /* ConfirmGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C949E0521228170004C9982 /* ConfirmGoalViewController.swift */; };
 		0CE31EDB2117F3490099694F /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE31EDA2117F3490099694F /* UIViewController+ActivityIndicator.swift */; };
 		0CE31EDD2117FEE60099694F /* PlayerStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE31EDC2117FEE60099694F /* PlayerStatsCell.swift */; };
 		0CE31EDF211801F40099694F /* PlayerStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE31EDE211801F40099694F /* PlayerStatsViewController.swift */; };
@@ -90,6 +95,11 @@
 		0C516896211104B9009FAE9D /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		0C516898211106DC009FAE9D /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		0C51689A211274B0009FAE9D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		0C949DFD21227A92004C9982 /* SelectScorerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectScorerViewController.swift; sourceTree = "<group>"; };
+		0C949DFF21227B22004C9982 /* ScorerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScorerTableViewCell.swift; path = PrimeCup/Cell/ScorerTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		0C949E0121227B8B004C9982 /* AssistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssistTableViewCell.swift; path = PrimeCup/Cell/AssistTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		0C949E0321227EF8004C9982 /* SelectAssistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAssistViewController.swift; sourceTree = "<group>"; };
+		0C949E0521228170004C9982 /* ConfirmGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGoalViewController.swift; sourceTree = "<group>"; };
 		0CA3D264211A614F00139929 /* PrimeCup.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrimeCup.entitlements; sourceTree = "<group>"; };
 		0CE31EDA2117F3490099694F /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		0CE31EDC2117FEE60099694F /* PlayerStatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsCell.swift; sourceTree = "<group>"; };
@@ -215,6 +225,9 @@
 				0C3B665B211569AD00E047FB /* SetScoreViewController.swift */,
 				0C3B665D21156A1A00E047FB /* AddGoalViewController.swift */,
 				0CE31EDE211801F40099694F /* PlayerStatsViewController.swift */,
+				0C949DFD21227A92004C9982 /* SelectScorerViewController.swift */,
+				0C949E0321227EF8004C9982 /* SelectAssistViewController.swift */,
+				0C949E0521228170004C9982 /* ConfirmGoalViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -226,6 +239,8 @@
 				0C477B1F210F9A3D0062C44A /* Player.swift */,
 				0C477B21210F9BA90062C44A /* Match.swift */,
 				0C3B665F2115788600E047FB /* Goal.swift */,
+				0C949DFF21227B22004C9982 /* ScorerTableViewCell.swift */,
+				0C949E0121227B8B004C9982 /* AssistTableViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -478,18 +493,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C949E0221227B8B004C9982 /* AssistTableViewCell.swift in Sources */,
 				0C477B27210FAC7E0062C44A /* StandingsCell.swift in Sources */,
 				0CE31EDD2117FEE60099694F /* PlayerStatsCell.swift in Sources */,
 				0C477AF2210F99E80062C44A /* StandingsViewController.swift in Sources */,
+				0C949DFE21227A92004C9982 /* SelectScorerViewController.swift in Sources */,
 				0C3B6658211568E800E047FB /* SelectHomeTeamViewController.swift in Sources */,
 				0C477AF0210F99E80062C44A /* AppDelegate.swift in Sources */,
 				0C477B20210F9A3D0062C44A /* Player.swift in Sources */,
 				0CE31EDB2117F3490099694F /* UIViewController+ActivityIndicator.swift in Sources */,
 				0C516897211104B9009FAE9D /* PlayerCell.swift in Sources */,
+				0C949E0421227EF8004C9982 /* SelectAssistViewController.swift in Sources */,
 				0C51689B211274B0009FAE9D /* PlayerViewController.swift in Sources */,
 				0C477B2C211016700062C44A /* MatchHistoryViewController.swift in Sources */,
 				0C477B25210F9F3D0062C44A /* TeamPlayerDatabase.swift in Sources */,
+				0C949E0621228170004C9982 /* ConfirmGoalViewController.swift in Sources */,
 				0CE31EDF211801F40099694F /* PlayerStatsViewController.swift in Sources */,
+				0C949E0021227B22004C9982 /* ScorerTableViewCell.swift in Sources */,
 				0C3B665E21156A1A00E047FB /* AddGoalViewController.swift in Sources */,
 				0C3B665A2115698200E047FB /* SelectAwayTeamViewController.swift in Sources */,
 				0C3B665221151ADD00E047FB /* AdminLoginViewController.swift in Sources */,

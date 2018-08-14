@@ -83,7 +83,6 @@ class AddGoalViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             goal = Goal(scorer: scorer!, assist: assist!)
         }
         
-        
         // Instantiate previous VC, and append goal to it.
         // let previousVC = self.storyboard?.instantiateViewController(withIdentifier: "setScoreVC") as! SetScoreViewController
         
